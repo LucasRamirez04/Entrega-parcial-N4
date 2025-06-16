@@ -76,6 +76,8 @@ def eliminar_usuario():
     for usuario in lista_usuarios:
         if usuario["nombre"] == usuario_buscado:
             print("Usuario encontrado✅")
+            print(f"Nombre de usuario: {usuario['nombre']}")
+            print(f"Sexo del usuario: {usuario['sexo']}")
             encontrado = True
             while True:
                 confirmacion = input(f"Estás segur@ que quieres eliminar el usuario {usuario['nombre']} (S/N): ").upper()
@@ -104,31 +106,30 @@ def salir():
         else:
             print("Opcion invalida, intento con S o N")
     return salir
-        
+
+#CODIGO MAIN
+print("=============================================")
+print("BIENVENIDO AL PROGRAMA 'ADMINISTRAR USUARIOS'")
+print("=============================================\n")
+
 while True:
-    print("==========================================")
-    print("BIENVENIDO AL PROGRAMA 'LISTA DE USUARIO'")
-    print("==========================================\n")
-    print("--- MENU DE OPCIONES ---")
+    print("\n--- MENU DE OPCIONES ---")
     print("[1]. Ingresar usuario")
     print("[2]. Buscar usuario")
     print("[3]. Eliminar usuario")
     print("[4]. Salir del programa")
     op = input("Elija una opción (1/2/3/4): ")
+
     if op == "1": 
-        registro_usuario()
-        
+        registro_usuario()       
     elif op == "2":
         buscar_usuario()
-
     elif op == "3":
         eliminar_usuario()
-
     elif op == "4":
         salida = salir()
         if salida:
             print("Saliendo del sistema, Hasta pronto🙌🙌")
             break
-
     else:
         print("Error: Se ha ingresado una opción invalida, intente con (1/2/3/4)")
