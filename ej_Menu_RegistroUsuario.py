@@ -49,9 +49,62 @@ def registrar_clave():
 
         print("Clave registrada exitosamente ✅.\n")
         return clave
-
-
-
+def registro_usuario():
+    print("REGISTRO DE USUSARIO")
+    usuario = {}
+    usuario["nombre"] = registrar_nombre(lista_usuarios)
+    usuario["sexo"] = registrar_sexo()
+    usuario["clave"] = registrar_clave()
+    print(f"Se ha registrado exitosamente el usuario\n{usuario}")
+    lista_usuarios.append(usuario)
+def buscar_usuario():
+    print("BUSQUEDA DE USUARIO")
+    usuario_buscado = input("Ingrese el nombre de usuario a buscar: ")
+    encontrado = False
+    for usuario in lista_usuarios:
+        if usuario["nombre"] == usuario_buscado:
+            print("Usuario encontrado✅")
+            print(f"Nombre de usuario: {usuario['nombre']}")
+            print(f"Sexo del usuario: {usuario['sexo']}")
+            encontrado = True
+    if not encontrado:
+        print("No se ha encontrado ese nombre de usuario")
+def eliminar_usuario():
+    print("ELIMINAR USUARIO")
+    usuario_buscado = input("Ingrese el nombre de usuario a buscar: ")
+    encontrado = False
+    for usuario in lista_usuarios:
+        if usuario["nombre"] == usuario_buscado:
+            print("Usuario encontrado✅")
+            encontrado = True
+            while True:
+                confirmacion = input(f"Estás segur@ que quieres eliminar el usuario {usuario['nombre']} (S/N): ").upper()
+                if confirmacion == "S":
+                    lista_usuarios.remove(usuario)
+                    print(f"Se ha elinado el usuario correctamente")
+                    break
+                elif confirmacion == "N":
+                    print("Cancelando eliminación, volviendo...")
+                    break
+                else:
+                    print("Opcion invalida, intento con S o N")
+            break
+    if not encontrado:
+        print("No se ha encontrado ese nombre de usuario")
+def salir():
+    salir = False
+    while True:
+        confirmación = input(f"Estás segur@ que quieres salir del sistema(S/N): ").upper()
+        if confirmación == "S":
+            salir = True   
+            break           
+        elif confirmación == "N":
+            print("Vollviendo al menu principal...")
+            break
+        else:
+            print("Opcion invalida, intento con S o N")
+    return salir
+        
 while True:
     print("==========================================")
     print("BIENVENIDO AL PROGRAMA 'LISTA DE USUARIO'")
@@ -63,64 +116,18 @@ while True:
     print("[4]. Salir del programa")
     op = input("Elija una opción (1/2/3/4): ")
     if op == "1": 
-        print("REGISTRO DE USUSARIO")
-        usuario = {}
-        usuario["nombre"] = registrar_nombre(lista_usuarios)
-        usuario["sexo"] = registrar_sexo()
-        usuario["clave"] = registrar_clave()
-        print(f"Se ha registrado exitosamente el usuario\n{usuario}")
-        lista_usuarios.append(usuario)
+        registro_usuario()
         
     elif op == "2":
-        print("BUSQUEDA DE USUARIO")
-        usuario_buscado = input("Ingrese el nombre de usuario a buscar: ")
-        encontrado = False
-        for usuario in lista_usuarios:
-            if usuario["nombre"] == usuario_buscado:
-                print("Usuario encontrado✅")
-                print(f"Nombre de usuario: {usuario['nombre']}")
-                print(f"Sexo del usuario: {usuario['sexo']}")
-                encontrado = True
-        if not encontrado:
-            print("No se ha encontrado ese nombre de usuario")
+        buscar_usuario()
 
     elif op == "3":
-        print("ELIMINAR USUARIO")
-        usuario_buscado = input("Ingrese el nombre de usuario a buscar: ")
-        encontrado = False
-        for usuario in lista_usuarios:
-            if usuario["nombre"] == usuario_buscado:
-                print("Usuario encontrado✅")
-                encontrado = True
-                while True:
-                    confirmacion = input(f"Estás segur@ que quieres eliminar el usuario {usuario['nombre']} (S/N): ").upper()
-                    if confirmacion == "S":
-                        lista_usuarios.remove(usuario)
-                        print(f"Se ha elinado el usuario correctamente")
-                        break
-                    elif confirmacion == "N":
-                        print("Cancelando eliminación, volviendo...")
-                        break
-                    else:
-                        print("Opcion invalida, intento con S o N")
-                break
-        if not encontrado:
-            print("No se ha encontrado ese nombre de usuario")
+        eliminar_usuario()
 
     elif op == "4":
-        salir = False
-        while True:
-            confirmacion = input(f"Estás segur@ que quieres salir del sistema(S/N): ").upper()
-            if confirmacion == "S":
-                salir = True   
-                break           
-            elif confirmacion == "N":
-                print("Vollviendo al menu principal...")
-                break
-            else:
-                print("Opcion invalida, intento con S o N")
-        if salir:
-            print("Saliendo del sistema, Hasta pronto")
+        salida = salir()
+        if salida:
+            print("Saliendo del sistema, Hasta pronto🙌🙌")
             break
 
     else:
