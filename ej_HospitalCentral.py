@@ -47,7 +47,7 @@ def validar_rut(rut):
         return False
     
     if len(rut) != 10:
-        print("Rut inválido, no cumple con en numero de caracteres correspondientes")
+        print("Rut inválido, no cumple con el numero de caracteres correspondientes")
         return False
 
     return True
