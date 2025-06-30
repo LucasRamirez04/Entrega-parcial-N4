@@ -138,14 +138,15 @@ def Cancelar_compra(lista):
 
 def Confirmar_salida():
     while True:
-        salir = input("Desea seguir comprando (S/N): ").upper()
-        if salir == "S":
+        print("Esta segur@ que desea salir")
+        salir = input("[1] Salir   [2] Seguir comprando\n")
+        if salir == "1":
+            return True
+        elif salir == "2":                
             print("Volviendo al menú principal...")
             return False
-        elif salir == "N":                
-            return True
         else:
-            print("Opción inválida, intente con (S/N)")
+            print("Opción inválida, intente con (1/2)")
 
 lista_ventas = []
 while True:
